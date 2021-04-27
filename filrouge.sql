@@ -56,10 +56,10 @@ CREATE TABLE salaries(
    sal_nom VARCHAR(50) NOT NULL,
    sal_prenom VARCHAR(50) NOT NULL,
    sal_adresse VARCHAR(150),
-   sal_tel VARCHAR(10) NOT NULL,
-   sal_mail VARCHAR(30) NOT NULL,
+   sal_tel VARCHAR(20) NOT NULL,
+   sal_mail VARCHAR(150) NOT NULL,
    sal_enfants INT,
-   sal_date_entree DATE NOT NULL
+   sal_date_entree DATETIME NOT NULL
 ) ENGINE=InnoDB;
 
 
@@ -67,9 +67,11 @@ CREATE TABLE clients(
    cli_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    cli_nom VARCHAR(50) NOT NULL,
    cli_prenom VARCHAR(50) NOT NULL,
+   cli_ville VARCHAR(100) NOT NULL,
    cli_adresse VARCHAR(150) NOT NULL,
-   cli_tel VARCHAR(10) NOT NULL,
+   cli_tel VARCHAR(20) NOT NULL,
    cli_mail VARCHAR(50) NOT NULL,
+   cli_mdp VARCHAR(150) NOT NULL,
    cli_ref VARCHAR(50) NOT NULL,
    cli_type TINYINT(1) NOT NULL,
    coeff DECIMAL(7,2) NOT NULL,
@@ -82,7 +84,7 @@ CREATE TABLE commandes(
    com_date DATETIME NOT NULL,
    reduc DECIMAL(15,2) NOT NULL,
    paie_date DATETIME NOT NULL,
-   paie_type VARCHAR(10) NOT NULL,
+   paie_type TINYINT(1) NOT NULL,
    com_sal_id INT,
    com_cli_id INT,
    FOREIGN KEY(com_sal_id) REFERENCES salaries(sal_id),
@@ -113,29 +115,6 @@ CREATE TABLE livr_details(
 ) ENGINE=InnoDB;
 
 
-/* table soucateg */
-INSERT INTO soucateg (soucat_id, soucat_nom)
-VALUES (1, 'Guitare Electrique'), (2, 'Guitare Acoustique'), (3, 'Guitare Classique'), (4, 'Basse Electrique'), (5, 'Basse Acoustique'), (6, 'Basse Classique'), (7, 'Autres instruments à cordes pincées'), (8, 'Ampli Guitare Electrique'), (9, 'Ampli Guitare Acoustique'), (10, 'Ampli Basse');
-INSERT INTO soucateg (soucat_id, soucat_nom)
-VALUES (11, 'Effets Guitare Electrique'), (12, 'Effets Guitare Acoustique'), (13, 'Effets Basse'), (14, 'Piano numérique'), (15, 'Clavier de scène'), (16, 'Clavier arrangeur'), (17, 'Accordéon & Melodica'), (18, 'Orgue & Clavecin'), (19, 'Synthétiseur'), (20, 'Workstation');
-INSERT INTO soucateg (soucat_id, soucat_nom)
-VALUES (21, 'Sampleur / Groovebox'), (22, 'Enceinte'), (23, 'Enregistreur'), (24, 'Carte son & interface audio'), (25, 'Casque Studio & DJ'), (26, 'Casque Hi-Fi'), (27, 'Micro Chant'), (28, 'Micro Smartphone'), (29, 'Accessoires Micro'), (30, 'Contrôleur & Logiciel DJ');
-INSERT INTO soucateg (soucat_id, soucat_nom)
-VALUES (31, 'Mixeur & Effets DJ'), (32, 'Accessoires DJ'), (33, 'Jeux de lumière'), (34, 'Projecteur'), (35, 'Laser'), (36, 'Eclairage de Scène'), (37, 'Batterie Acoustique'), (38, 'Batterie Electronique'), (39, 'Percussions'), (40, 'Violon');
-INSERT INTO soucateg (soucat_id, soucat_nom)
-VALUES (41, 'Violoncelle'), (42, 'Contrebasse'), (43, 'Accordeur / Metronome / Pupitre'), (44, 'Alimentation & Stockage'), (45, 'Cablerie'), (46, 'Outillage');
-
-/* table categories MySQL me retourne une erreur */
-/* Il me retourne "3 valeurs étaient attendues, mais 2 ont été trouvées. (near "(" at position 76)" */
-INSERT INTO categories (cat_id, cat_nom) VALUES (1, 'Guitares & Basses'), (2, 'Amplis & Effets'), (3, 'Claviers & Pianos'), (4, 'Synthés & Sampleurs'), (5, 'Home Studio'), (6, 'Casques'), (7, 'Micros & HF'), (8, 'Espace DJ'), (9, 'Eclairage'), (10, 'Câbles & Access.');
-INSERT INTO categories (cat_id, cat_nom) VALUES (11, 'Batteries & Percu'), (12, 'Violons & Quatuor');
-
-/* table fournisseurs */
-INSERT INTO `fournisseurs` (`fou_nom`,`fou_adresse`,`fou_tel`,`fou_contact`,`fou_mail`,`fou_pays`,`fou_ville`) VALUES ("A Mi Incorporated","CP 626, 2802 Cubilia Rue","(399) 867-9167","Clayton Rice","risus.odio@Proin.co.uk","France","Ajaccio"),("Auctor Velit Aliquam Incorporated","793-1343 Quis Rd.","(273) 751-7854","Kiona Wilkinson","sit.amet.consectetuer@infaucibus.net","France","Le Puy-en-Velay"),("Facilisis PC","694-6666 Proin Av.","(579) 772-2656","Victor Ewing","quam.a.felis@ridiculusmusProin.edu","France","Joué-lès-Tours"),("Adipiscing Company","568-4332 Est Rue","(602) 303-7244","Chester Chandler","tempus@luctusvulputatenisi.org","France","Aubagne"),("Nec Ltd","Appartement 149-9025 Aliquet Avenue","(918) 367-5254","Elliott Randolph","eu.odio.Phasellus@ultrices.net","France","Joué-lès-Tours"),("Donec At Company","139 Adipiscing Impasse","(560) 495-3933","Brittany Curtis","facilisis.vitae@ligulaeu.co.uk","France","Angoulême"),("Auctor Ullamcorper Inc.","854-583 Porta Rue","(998) 417-4551","Rhoda Merrill","justo@feugiattellus.com","France","Saintes"),("Leo Consulting","985 Semper Avenue","(925) 102-1773","Finn Mcintosh","accumsan.interdum.libero@Duisgravida.net","France","Montluçon"),("Risus Corporation","CP 686, 6279 Nullam Impasse","(671) 428-7935","Fletcher Pugh","ullamcorper.velit.in@dignissimmagnaa.com","France","Courbevoie"),("Dignissim Pharetra LLC","CP 946, 3188 Quam Impasse","(683) 977-1791","Denton Hoffman","ipsum.porta.elit@Phasellus.edu","France","Tarbes");
-INSERT INTO `fournisseurs` (`fou_nom`,`fou_adresse`,`fou_tel`,`fou_contact`,`fou_mail`,`fou_pays`,`fou_ville`) VALUES ("Neque Et LLC","Appartement 719-4618 Nec Route","(816) 990-0259","Brendan Carter","mollis@Etiamgravida.com","France","Nevers"),("Interdum Ligula Eu Ltd","2892 Iaculis, Impasse","(315) 626-2141","Suki Jordan","Nulla@iaculislacus.net","France","Hérouville-Saint-Clair"),("Ipsum Nunc Limited","304-9851 Nisl Chemin","(145) 487-6123","Emma Bonner","dui.in@vel.net","France","Troyes"),("Duis Mi Foundation","5226 Non, Rue","(333) 948-4341","Raymond Ingram","Sed.eu.nibh@tristiquesenectus.org","France","Saint-Quentin"),("Malesuada Integer Id Company","3495 Ridiculus Avenue","(210) 363-2314","Kristen Robertson","rutrum.urna.nec@egetvenenatisa.ca","France","Bastia"),("Sapien Cras Dolor Company","182-1704 Interdum Avenue","(452) 332-4056","Deanna Mendez","Donec.elementum.lorem@nibh.org","France","Rezé"),("Sed Tortor Integer Limited","4977 Integer Chemin","(401) 879-3049","Kuame Barron","Vivamus.euismod.urna@ut.net","France","Ajaccio"),("Eleifend Nec Malesuada LLC","Appartement 179-6213 Pharetra. Ave","(263) 205-9989","Shad Burke","Etiam@Fuscemi.edu","France","Le Petit-Quevilly"),("Eleifend Cras LLC","Appartement 308-1841 Gravida Avenue","(360) 517-3566","Austin Hodges","augue.eu.tellus@sagittis.edu","France","Saintes"),("Tempus Scelerisque Inc.","Appartement 410-3901 Justo Rue","(668) 913-2811","Sydney Mcpherson","lectus.quis@sociis.ca","France","Nancy");
-INSERT INTO `fournisseurs` (`fou_nom`,`fou_adresse`,`fou_tel`,`fou_contact`,`fou_mail`,`fou_pays`,`fou_ville`) VALUES ("Euismod Inc.","Appartement 984-2088 Primis Rue","(531) 172-4649","Honorato Stanley","tortor.Nunc@consequatpurusMaecenas.co.uk","France","Compiègne"),("Ipsum Suspendisse Non Associates","991-2081 Volutpat. Rue","(951) 117-8640","Guinevere Mack","consequat.lectus.sit@etlaciniavitae.co.uk","France","La Rochelle"),("Neque Institute","372-7110 Donec Rue","(596) 442-7974","Lacota Armstrong","Quisque.varius@faucibus.net","France","Colomiers"),("Sit Ltd","316-3095 Lobortis Route","(571) 715-0363","Lana Case","iaculis.lacus.pede@metusurnaconvallis.edu","France","Châtellerault"),("Non Corporation","812 Nullam Av.","(854) 375-8698","Carissa Whitfield","enim@Curae.net","France","Villeneuve-d'Ascq"),("Praesent Interdum Ligula Inc.","CP 884, 7347 In Rd.","(154) 151-1099","Jael Serrano","neque.In.ornare@aliquam.ca","France","Saint-Médard-en-Jalles"),("Massa Mauris Vestibulum Inc.","907 Proin Route","(930) 120-8644","Flavia Lucas","commodo.tincidunt@tinciduntnibhPhasellus.ca","France","Mérignac"),("Auctor LLC","1675 Laoreet Av.","(682) 412-0644","Quinn Osborne","lorem.tristique@Nullamut.com","France","Tours"),("Pellentesque Associates","CP 464, 8283 Morbi Impasse","(436) 392-7202","Jada Powell","lorem.semper@ullamcorper.com","France","Haguenau"),("Nisl Nulla Institute","Appartement 779-354 Arcu. Rd.","(815) 141-5073","Brenna Bright","vehicula.et.rutrum@pharetraNam.edu","France","Drancy");
-INSERT INTO `fournisseurs` (`fou_nom`,`fou_adresse`,`fou_tel`,`fou_contact`,`fou_mail`,`fou_pays`,`fou_ville`) VALUES ("Proin Velit Sed Institute","Appartement 860-6388 Eu Chemin","(387) 280-9602","Dora Farley","semper.Nam@Nullam.org","France","Saint-Brieuc"),("Non Leo Associates","CP 360, 2185 Amet Route","(535) 982-3758","Mary Best","elit.elit@fermentum.com","France","Montluçon"),("Scelerisque Sed Sapien Associates","CP 351, 7292 Quis Avenue","(516) 893-3008","Fuller Guy","a.magna.Lorem@tempor.net","France","Limoges"),("In Nec Orci Foundation","518-6651 Nunc Av.","(612) 980-4835","Edan Bradshaw","magna.Ut@sed.edu","France","Saint-Dié-des-Vosges"),("Turpis Institute","992-4223 Quis, Impasse","(509) 678-0472","Carly Walters","metus.Aliquam.erat@ametdapibusid.edu","France","Saint-Malo"),("Etiam Ligula Limited","429 Vestibulum Ave","(876) 679-8180","Raphael Pena","Cras.eget.nisi@penatibusetmagnis.com","France","Schiltigheim"),("Blandit Consulting","6341 Sem. Rd.","(561) 717-2414","Wallace Perry","odio.Phasellus.at@seddolorFusce.edu","France","Nancy"),("Lectus Industries","682-3365 Integer Av.","(276) 368-6324","Maggie Willis","molestie.dapibus@nisl.edu","France","Limoges"),("Ipsum Dolor Sit Corp.","CP 606, 7588 Est Ave","(597) 202-8713","Christian Oconnor","amet.consectetuer@vehicula.co.uk","France","Troyes"),("In Company","Appartement 186-8280 Integer Av.","(774) 640-7837","Wallace Black","non.ante@ut.edu","France","Arras");
-INSERT INTO `fournisseurs` (`fou_nom`,`fou_adresse`,`fou_tel`,`fou_contact`,`fou_mail`,`fou_pays`,`fou_ville`) VALUES ("Vitae Corporation","Appartement 549-6257 Pharetra. Rue","(426) 822-1359","Athena Spears","consectetuer.cursus.et@Aliquamadipiscing.org","France","Compiègne"),("Luctus Corporation","431-759 Vitae Rue","(500) 692-3358","Gay Smith","eu.sem@placeratvelitQuisque.com","France","Limoges"),("Eu Company","883 Vel Rue","(177) 339-6812","Steel Velez","commodo.ipsum.Suspendisse@SuspendisseduiFusce.org","France","Châtellerault"),("Lectus Ante Ltd","7122 Lobortis Impasse","(347) 120-5360","Yen House","placerat.orci@disparturient.net","France","Agen"),("Placerat Orci Corp.","939-4026 Sollicitudin Chemin","(623) 720-6894","Oprah Melendez","mus@egetvarius.com","France","Pontarlier"),("Donec Associates","Appartement 864-9957 Accumsan Rd.","(661) 717-2684","Wang Cameron","vestibulum.Mauris@sagittissemper.edu","France","Brest"),("Gravida Mauris Foundation","CP 140, 3343 Faucibus Avenue","(360) 268-6652","Samantha Mckinney","id.nunc@dignissimMaecenasornare.ca","France","Sens"),("Pellentesque Tincidunt Tempus Consulting","Appartement 193-7153 Non Rd.","(147) 490-3509","Bo Everett","lobortis.quam@Etiamimperdietdictum.co.uk","France","Châteauroux"),("Arcu Associates","3325 Eu Chemin","(584) 356-8491","Daniel Pittman","libero.mauris@vitaesodales.ca","France","Montbéliard"),("At Corporation","Appartement 228-1464 Et, Ave","(665) 349-9790","Lyle Cote","Pellentesque.habitant@lectusa.org","France","Draguignan");
 
 /*
 DROP TABLE `myTable`;
