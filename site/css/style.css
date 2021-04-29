@@ -1,0 +1,33 @@
+body {
+    background-image: url("../../Charte/BACKGROUND/background\ village.png");
+    background-size: cover;
+    background-position: fixed;
+    /*background-size: 70%, 100%;
+    color: dimgray;*/
+}
+
+.content {
+    background-color: #e7e7e7;
+    /*background-image: url("../../Charte/BACKGROUND/bande\ milieu.png");
+    background-size: cover;*/
+}
+
+.row {
+    padding: 0;
+}
+
+#nav {
+    z-index: 3;
+    right: 0;
+}
+
+#logo {
+    position: absolute;
+    height: 110%;
+    z-index: 4;
+}
+
+
+/*.header {
+    background-image: none;
+}*/
