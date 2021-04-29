@@ -63,7 +63,7 @@ $res_categories->closeCursor();
     </form>
   </div>
 </div>
-
+</div> <!-- fermeture de la div class="container" ouverte dans le header -->
 <?php
 include("footer.php");
 ?>

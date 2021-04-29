@@ -58,7 +58,7 @@ if (empty($produit->pro_id)) {
         </div>
     </div>
 </div>
-
+</div> <!-- fermeture de la div class="container" ouverte dans le header -->
 
 <?php
 

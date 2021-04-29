@@ -1,34 +1,13 @@
 
     <footer>
-
-        <div class="row mt-3">
-            <!--<div class="col-12 col-sm-12">
-
-                <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-                    <a class="text-white" href="#">
-                        <p class="pr-3">mentions légales</p>
-                    </a>
-                    <a class="text-white" href="#">
-                        <p class="pr-3">horaires</p>
-                    </a>
-                    <a class="text-white" href="#">
-                        <p class="pr-3">plan du site</p>
-                    </a>
-                </nav>
-
-            </div>-->
-            
-            <div class="col-12 col-sm-12">
-                <div class="text-center">
-                    <img src="img/FOOTER/footer SIMPLE.png" class="img-fluid" alt="Footer" title="Footer">
-                </div>
-            </div>
-        </div>
-
+    <div class="row mt-3">
+    <div class="col-12 col-sm-12">
+    <div class="text-center">
+    <img src="img/FOOTER/footer SIMPLE.png" class="img-fluid" alt="Footer" title="Footer">
+    </div>
+    </div>
+    </div>
     </footer>
-
-    </div> <!-- fermerure de la div class="container" ouverte dans le header -->
-
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
